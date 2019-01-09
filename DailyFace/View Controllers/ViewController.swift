@@ -83,7 +83,8 @@ class ViewController: UIViewController {
         let minute = calendar.component(.minute, from: date)
         let second = calendar.component(.second, from: date)
         
-        dateString = "\(month)-\(day)-\(year):\(hour):\(minute):\(second)"
+//        dateString = "\(month)-\(day)-\(year):\(hour):\(minute):\(second)"
+        dateString = String(format: "%02d-%02d-%04d:%02d:%02d:%02d", month, day, year, hour, minute, second)
         let labelString = dateString!.split(separator: ":")[0].description
         
         dateButton.setTitle(labelString, for: .normal)
