@@ -1,0 +1,20 @@
+PODS:
+  - FSPagerView (0.8.2)
+  - Nuke (7.5.2)
+
+DEPENDENCIES:
+  - FSPagerView
+  - Nuke (~> 7.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FSPagerView
+    - Nuke
+
+SPEC CHECKSUMS:
+  FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
+  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
+
+PODFILE CHECKSUM: 6de8f1c0e54c4de98fc3d79ed036f265d59b44e2
+
+COCOAPODS: 1.5.3
