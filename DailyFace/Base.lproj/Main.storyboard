@@ -228,6 +228,7 @@
                         <viewLayoutGuide key="safeArea" id="Doe-Yl-V39"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="fOq-GO-Wkl" id="gfG-IJ-QYt"/>
                         <outlet property="imageView" destination="fzN-dY-ZbS" id="1Rz-BT-DWQ"/>
                         <outlet property="pagerView" destination="vTr-8R-55Q" id="Cpx-j7-dwS"/>
                     </connections>

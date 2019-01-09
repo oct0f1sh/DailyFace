@@ -8,4 +8,5 @@ target 'DailyFace' do
   # Pods for DailyFace
   pod 'FSPagerView'
   pod 'Nuke', '~> 7.0'
+  pod 'SwiftVideoGenerator'
 end

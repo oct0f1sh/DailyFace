@@ -15,6 +15,7 @@ class ContentViewController: UIViewController {
     
     // IBOUTLETS
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
@@ -29,11 +30,30 @@ class ContentViewController: UIViewController {
     
     var urls: [URL] = FileService.getImages()
     
+    var firstDate: String {
+//        return urls[0].path.split(separator: "/").description.split(separator: ":")[0].description
+        return urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+//        return urls.first!.path.split(separator: "/").description.split(separator: ":")[0].description
+    }
+    
+    var lastDate: String {
+//        return urls.last!.path.split(separator: "/").description.split(separator: ":")[0].description
+        return urls.last!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+    }
+    
     // FUNCTIONS
     
     func setupPagerView() {
         pagerView.transformer = FSPagerViewTransformer(type: .overlap)
         pagerView.itemSize = CGSize(width: 270, height: 375)
+    }
+    
+    func setupDateLabel() {
+        if firstDate == lastDate {
+            dateLabel.text = firstDate
+        } else {
+            dateLabel.text = "\(firstDate) to \(lastDate)"
+        }
     }
     
     // IBACTIONS
@@ -56,6 +76,8 @@ class ContentViewController: UIViewController {
         urls = FileService.getImages()
         
         pagerView.reloadData()
+        
+        setupDateLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
