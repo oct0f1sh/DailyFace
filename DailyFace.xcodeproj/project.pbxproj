@@ -17,6 +17,7 @@
 		AE13044D21E55DD20024B2A1 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13044C21E55DD20024B2A1 /* FileService.swift */; };
 		AE13044F21E565010024B2A1 /* ImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13044E21E565010024B2A1 /* ImagesViewController.swift */; };
 		AE13045221E5971F0024B2A1 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045121E5971F0024B2A1 /* ImageCell.swift */; };
+		AE13045421E682F40024B2A1 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045321E682F40024B2A1 /* VideoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		AE13044C21E55DD20024B2A1 /* FileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		AE13044E21E565010024B2A1 /* ImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesViewController.swift; sourceTree = "<group>"; };
 		AE13045121E5971F0024B2A1 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		AE13045321E682F40024B2A1 /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		D86E838C3426E32C5F9DA3EA /* Pods-DailyFace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyFace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyFace/Pods-DailyFace.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				AE13044C21E55DD20024B2A1 /* FileService.swift */,
+				AE13045321E682F40024B2A1 /* VideoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-DailyFace/Pods-DailyFace-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
+				"${BUILT_PRODUCTS_DIR}/Player/Player.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftVideoGenerator/SwiftVideoGenerator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -212,6 +216,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSPagerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Player.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftVideoGenerator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE13045421E682F40024B2A1 /* VideoService.swift in Sources */,
 				AE13044F21E565010024B2A1 /* ImagesViewController.swift in Sources */,
 				AE0BBFDD21E5248E0065F72A /* ViewController.swift in Sources */,
 				AE13044D21E55DD20024B2A1 /* FileService.swift in Sources */,

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FSPagerView
 import Nuke
+import AVFoundation
 
 class ContentViewController: UIViewController {
     
@@ -56,10 +57,30 @@ class ContentViewController: UIViewController {
         }
     }
     
+    func playVideo(url: URL) {
+        let player = AVPlayer(url: url)
+        let playerLayer = AVPlayerLayer(player: player)
+        playerLayer.frame = self.view.bounds
+        
+        self.view.layer.addSublayer(playerLayer)
+        player.play()
+    }
+    
     // IBACTIONS
     
-    @IBAction func retakeButtonPressed(_ sender: UIButton) {
+    @IBAction func retakeButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func videoButtonTapped(_ sender: Any) {
+        VideoService.generateVideo(from: urls) { (vidUrl, err) in
+            guard err == nil else { return }
+            
+            if let url = vidUrl {
+                print("good job")
+                self.playVideo(url: url)
+            }
+        }
     }
     
     // OVERRIDES

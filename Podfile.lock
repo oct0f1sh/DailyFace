@@ -1,24 +1,28 @@
 PODS:
   - FSPagerView (0.8.2)
   - Nuke (7.5.2)
+  - Player (0.12.1)
   - SwiftVideoGenerator (1.2.2)
 
 DEPENDENCIES:
   - FSPagerView
   - Nuke (~> 7.0)
+  - Player (~> 0.12.0)
   - SwiftVideoGenerator
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FSPagerView
     - Nuke
+    - Player
     - SwiftVideoGenerator
 
 SPEC CHECKSUMS:
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
+  Player: ae8070a33c9360f5c93c247c00236b9489f62fca
   SwiftVideoGenerator: 31d4189cfd7d61a69f82ef5ed984a5d477f9f02a
 
-PODFILE CHECKSUM: 8a6ea22e5c6f3b05c7293b4566428d65c8797ecd
+PODFILE CHECKSUM: cbd71bfd484d0d1cc4bcb51f09c276b710a07d80
 
 COCOAPODS: 1.5.3

@@ -208,7 +208,7 @@
                                         <rect key="frame" x="183.5" y="688" width="47" height="30"/>
                                         <state key="normal" title="Retake"/>
                                         <connections>
-                                            <action selector="retakeButtonPressed:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="tPb-6O-Ol1"/>
+                                            <action selector="retakeButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="tPb-6O-Ol1"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -217,11 +217,20 @@
                                     <constraint firstAttribute="trailing" secondItem="vTr-8R-55Q" secondAttribute="trailing" id="pAy-at-a28"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tt-ht-6vc">
+                                <rect key="frame" x="335" y="820" width="40" height="30"/>
+                                <state key="normal" title="Video"/>
+                                <connections>
+                                    <action selector="videoButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="czu-A5-wrL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4yc-7H-zoN" firstAttribute="leading" secondItem="Doe-Yl-V39" secondAttribute="leading" id="7Pm-W3-zbm"/>
+                            <constraint firstItem="Doe-Yl-V39" firstAttribute="trailing" secondItem="3tt-ht-6vc" secondAttribute="trailing" constant="39" id="GDZ-a1-xOr"/>
                             <constraint firstAttribute="bottomMargin" secondItem="4yc-7H-zoN" secondAttribute="bottom" constant="50" id="Sbi-9b-pva"/>
+                            <constraint firstItem="Doe-Yl-V39" firstAttribute="bottom" secondItem="3tt-ht-6vc" secondAttribute="bottom" constant="12" id="VEp-jf-xqD"/>
                             <constraint firstItem="Doe-Yl-V39" firstAttribute="trailing" secondItem="4yc-7H-zoN" secondAttribute="trailing" id="ffn-Rw-Bdg"/>
                             <constraint firstItem="4yc-7H-zoN" firstAttribute="top" secondItem="jfJ-wi-Z2s" secondAttribute="topMargin" constant="50" id="vS8-2b-egj"/>
                         </constraints>
