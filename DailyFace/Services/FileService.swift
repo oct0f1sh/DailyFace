@@ -32,6 +32,6 @@ class FileService {
     }
     
     static func getImages() -> [URL] {
-        return try! FileManager.default.contentsOfDirectory(at: FileService.dir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        return try! FileManager.default.contentsOfDirectory(at: FileService.dir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles).sorted(by: {$0.path < $1.path})
     }
 }

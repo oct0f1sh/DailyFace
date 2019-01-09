@@ -169,7 +169,7 @@
             </objects>
             <point key="canvasLocation" x="-42.399999999999999" y="26.53673163418291"/>
         </scene>
-        <!--Content View Controller-->
+        <!--Data Source-->
         <scene sceneID="AuS-pM-Qcm">
             <objects>
                 <viewController id="hrO-jm-Ba1" customClass="ContentViewController" customModule="DailyFace" customModuleProvider="target" sceneMemberID="viewController">
@@ -178,42 +178,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="4yc-7H-zoN">
-                                <rect key="frame" x="60" y="94" width="294" height="718"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="718"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oct 10 - Jan 8" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOq-GO-Wkl">
-                                        <rect key="frame" x="61" y="0.0" width="172" height="33.5"/>
+                                        <rect key="frame" x="121" y="0.0" width="172" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-dY-ZbS">
-                                        <rect key="frame" x="19.5" y="172.5" width="255" height="375"/>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-dY-ZbS">
+                                        <rect key="frame" x="79.5" y="40.5" width="255" height="375"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="375" id="kMC-oQ-chT"/>
                                         </constraints>
                                     </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTr-8R-55Q" customClass="FSPagerView" customModule="FSPagerView">
+                                        <rect key="frame" x="0.0" y="172.5" width="414" height="375"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="375" id="0GJ-bh-X4y"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="hrO-jm-Ba1" id="PUl-xu-rEL"/>
+                                            <outlet property="delegate" destination="hrO-jm-Ba1" id="f9E-WD-pB2"/>
+                                        </connections>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cef-6D-htR">
-                                        <rect key="frame" x="123.5" y="688" width="47" height="30"/>
+                                        <rect key="frame" x="183.5" y="688" width="47" height="30"/>
                                         <state key="normal" title="Retake"/>
                                         <connections>
                                             <action selector="retakeButtonPressed:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="tPb-6O-Ol1"/>
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="vTr-8R-55Q" firstAttribute="leading" secondItem="4yc-7H-zoN" secondAttribute="leading" id="6hG-oW-Uk8"/>
+                                    <constraint firstAttribute="trailing" secondItem="vTr-8R-55Q" secondAttribute="trailing" id="pAy-at-a28"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="4yc-7H-zoN" firstAttribute="leading" secondItem="Doe-Yl-V39" secondAttribute="leading" constant="60" id="7Pm-W3-zbm"/>
+                            <constraint firstItem="4yc-7H-zoN" firstAttribute="leading" secondItem="Doe-Yl-V39" secondAttribute="leading" id="7Pm-W3-zbm"/>
                             <constraint firstAttribute="bottomMargin" secondItem="4yc-7H-zoN" secondAttribute="bottom" constant="50" id="Sbi-9b-pva"/>
-                            <constraint firstItem="Doe-Yl-V39" firstAttribute="trailing" secondItem="4yc-7H-zoN" secondAttribute="trailing" constant="60" id="ffn-Rw-Bdg"/>
+                            <constraint firstItem="Doe-Yl-V39" firstAttribute="trailing" secondItem="4yc-7H-zoN" secondAttribute="trailing" id="ffn-Rw-Bdg"/>
                             <constraint firstItem="4yc-7H-zoN" firstAttribute="top" secondItem="jfJ-wi-Z2s" secondAttribute="topMargin" constant="50" id="vS8-2b-egj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Doe-Yl-V39"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="fzN-dY-ZbS" id="1Rz-BT-DWQ"/>
+                        <outlet property="pagerView" destination="vTr-8R-55Q" id="Cpx-j7-dwS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6dT-Z6-gMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
