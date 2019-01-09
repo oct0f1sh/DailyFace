@@ -24,6 +24,7 @@ class FileService {
         }
         
         do {
+            // save image to document directory
             try imageData.write(to: imagePath)
             print("saved at: \(imagePath)")
         } catch {

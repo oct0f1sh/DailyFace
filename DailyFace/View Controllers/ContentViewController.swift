@@ -12,6 +12,9 @@ import FSPagerView
 import Nuke
 
 class ContentViewController: UIViewController {
+    
+    // IBOUTLETS
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pagerView: FSPagerView! {
         didSet {
@@ -19,19 +22,27 @@ class ContentViewController: UIViewController {
         }
     }
     
+    // VARIABLES
+    
     var capturedImage: UIImage!
     var capturedDate: String!
     
     var urls: [URL] = FileService.getImages()
     
-    @IBAction func retakeButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: false, completion: nil)
-    }
+    // FUNCTIONS
     
     func setupPagerView() {
         pagerView.transformer = FSPagerViewTransformer(type: .overlap)
         pagerView.itemSize = CGSize(width: 270, height: 375)
     }
+    
+    // IBACTIONS
+    
+    @IBAction func retakeButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+    // OVERRIDES
     
     override func viewDidLoad() {
         imageView.image = capturedImage
