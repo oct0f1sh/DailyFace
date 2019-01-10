@@ -1,16 +1,16 @@
 import AVFoundation
 import UIKit
 
-let kErrorDomain = "TimeLapseBuilder"
+let kErrorDomain = "VideoGenerator"
 let kFailedToStartAssetWriterError = 0
 let kFailedToAppendPixelBufferError = 1
 
-class TimeLapseBuilder: NSObject {
+class VideoGenerator: NSObject {
     let photos: [UIImage]
     var videoWriter: AVAssetWriter?
     
-    let inputSize = CGSize(width: 1080, height: 1920)
-    let outputSize = CGSize(width: 720, height: 1280)
+    let inputSize = CGSize(width: 900, height: 1200)
+    let outputSize = CGSize(width: 900, height: 1200)
     
     init(photos: [UIImage]) {
         self.photos = photos
@@ -21,7 +21,7 @@ class TimeLapseBuilder: NSObject {
         var error: NSError?
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-        let videoOutputURL = URL(fileURLWithPath: documentsPath.appendingPathComponent("AssembledVideo.mov"))
+        let videoOutputURL = URL(fileURLWithPath: documentsPath.appendingPathComponent("timelapse.mov"))
         
         do {
             try FileManager.default.removeItem(at: videoOutputURL)
@@ -120,7 +120,7 @@ class TimeLapseBuilder: NSObject {
         var appendSucceeded = false
         
         autoreleasepool {
-            if let image = image.rotate(radians: 2 * .pi)!.scaleImageToSize(newSize: CGSize(width: 300, height: 400)),
+            if let image = image.rotate(radians: 2 * .pi)!.resizeImageUsingVImage(size: outputSize),
                 let pixelBufferPool = pixelBufferAdaptor.pixelBufferPool {
                 let pixelBufferPointer = UnsafeMutablePointer<CVPixelBuffer?>.allocate(capacity: 1)
                 let status: CVReturn = CVPixelBufferPoolCreatePixelBuffer(

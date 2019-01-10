@@ -139,14 +139,23 @@
                                             <segue destination="9kR-mX-9DC" kind="presentation" id="Ohx-dm-Zhk"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVn-bK-Pjh">
+                                        <rect key="frame" x="192" y="821" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="hrO-jm-Ba1" kind="show" id="uOQ-QO-Itw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Zop-7b-5FC" firstAttribute="centerY" secondItem="Vqi-aj-qbp" secondAttribute="centerY" constant="-50" id="3br-YW-Wdb"/>
                                     <constraint firstItem="uBv-aB-VI1" firstAttribute="top" secondItem="Vqi-aj-qbp" secondAttribute="top" constant="75" id="51f-hH-Wsq"/>
                                     <constraint firstItem="Zop-7b-5FC" firstAttribute="centerX" secondItem="Vqi-aj-qbp" secondAttribute="centerX" id="IWX-mx-VSv"/>
+                                    <constraint firstItem="JVn-bK-Pjh" firstAttribute="top" secondItem="AT0-2f-pYj" secondAttribute="bottom" constant="15" id="RLb-R0-uPm"/>
                                     <constraint firstItem="uBv-aB-VI1" firstAttribute="centerX" secondItem="Vqi-aj-qbp" secondAttribute="centerX" id="Tl7-Bz-9Fe"/>
                                     <constraint firstItem="AT0-2f-pYj" firstAttribute="centerX" secondItem="Vqi-aj-qbp" secondAttribute="centerX" id="ZsM-L4-wdi"/>
                                     <constraint firstAttribute="bottom" secondItem="AT0-2f-pYj" secondAttribute="bottom" constant="90" id="bih-q9-ppC"/>
+                                    <constraint firstItem="JVn-bK-Pjh" firstAttribute="centerX" secondItem="Vqi-aj-qbp" secondAttribute="centerX" id="sLf-Zx-GQ2"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -265,4 +274,7 @@
             <point key="canvasLocation" x="-43" y="956"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J7K-wz-tC6"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -133,7 +133,7 @@ class ViewController: UIViewController {
 extension ViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
-            image = UIImage(data: imageData)
+            image = UIImage(data: imageData)?.resizeImageUsingVImage(size: CGSize(width: 900, height: 1200))
         }
         
         self.performSegue(withIdentifier: "showPhoto", sender: self)

@@ -115,34 +115,15 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "pagerCell", at: index)
         
-        Nuke.loadImage(with: urls[index], into: cell.imageView!)
+        let url = urls[index]
+        
+        Nuke.loadImage(with: url, into: cell.imageView!)
+        cell.textLabel?.text = url.path.split(separator: "/").last?.description.split(separator: ":").first?.description
         
         return cell
     }
     
     func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool {
         return false
-    }
-}
-
-extension ContentViewController: PlayerDelegate {
-    func playerReady(_ player: Player) {
-        print("player ready")
-    }
-    
-    func playerPlaybackStateDidChange(_ player: Player) {
-        return
-    }
-    
-    func playerBufferingStateDidChange(_ player: Player) {
-        return
-    }
-    
-    func playerBufferTimeDidChange(_ bufferTime: Double) {
-        return
-    }
-    
-    func player(_ player: Player, didFailWithError error: Error?) {
-        print("error with player: \(error?.localizedDescription)")
     }
 }
