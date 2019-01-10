@@ -561,22 +561,30 @@ public class VideoGenerator: NSObject {
         self.images = [UIImage](repeating: _image, count: 2)
       }
     } else {
-      
-      for _image in _images {
-        autoreleasepool {
-          if let imageData = _image.scaleImageToSize(newSize: CGSize(width: videoImageWidthForMultipleVideoGeneration, height: videoImageWidthForMultipleVideoGeneration))?.pngData() {
-            datasImages.append(imageData)
-          }
+        for _image in _images {
+            autoreleasepool {
+                if let img = _image.scaleImageToSize(newSize: CGSize(width: 400, height: 300)) {
+                    self.images.append(img.rotate(radians: .pi/2)!)
+                }
+            }
         }
-      }
-      
-      datasImages.forEach {
-        if let imageData = $0, let image = UIImage(data: imageData, scale: UIScreen.main.scale) {
-          self.images.append(image)
-        }
-      }
-      
-      datasImages.removeAll()
+//      for _image in _images {
+//        autoreleasepool {
+//          //if let imageData = _image.scaleImageToSize(newSize: CGSize(width: videoImageWidthForMultipleVideoGeneration, height: videoImageWidthForMultipleVideoGeneration))?.pngData() {
+//            if let imageData = _image.jpegData(compressionQuality: 1) {
+//                datasImages.append(imageData)
+//          }
+//        }
+//      }
+//
+//      datasImages.forEach {
+//        if let imageData = $0, let image = UIImage(data: imageData, scale: UIScreen.main.scale) {
+//          self.images.append(image)
+//        }
+//      }
+//
+//      datasImages.removeAll()
+//        self.images = _images
     }
     
     switch type! {

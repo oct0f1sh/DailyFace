@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 import FSPagerView
 import Nuke
-import AVFoundation
+//import AVFoundation
+import Player
 
 class ContentViewController: UIViewController {
     
@@ -31,14 +32,13 @@ class ContentViewController: UIViewController {
     
     var urls: [URL] = FileService.getImages()
     
+    let player = Player()
+    
     var firstDate: String {
-//        return urls[0].path.split(separator: "/").description.split(separator: ":")[0].description
         return urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
-//        return urls.first!.path.split(separator: "/").description.split(separator: ":")[0].description
     }
     
     var lastDate: String {
-//        return urls.last!.path.split(separator: "/").description.split(separator: ":")[0].description
         return urls.last!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
     }
     
@@ -58,12 +58,23 @@ class ContentViewController: UIViewController {
     }
     
     func playVideo(url: URL) {
-        let player = AVPlayer(url: url)
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = self.view.bounds
+//        let player = AVPlayer(url: url)
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = self.view.bounds
+//
+//        self.view.layer.addSublayer(playerLayer)
+//        player.play()
+        self.player.playerDelegate = self
+        self.player.playbackDelegate = self
+        self.player.view.frame = self.view.bounds
         
-        self.view.layer.addSublayer(playerLayer)
-        player.play()
+        self.addChild(self.player)
+        self.view.addSubview(self.player.view)
+        self.player.didMove(toParent: self)
+        
+        self.player.url = url //URL(string: "https://v.cdn.vine.co/r/videos/AA3C120C521177175800441692160_38f2cbd1ffb.1.5.13763579289575020226.mp4")
+        
+        self.player.playFromBeginning()
     }
     
     // IBACTIONS
@@ -77,8 +88,9 @@ class ContentViewController: UIViewController {
             guard err == nil else { return }
             
             if let url = vidUrl {
-                print("good job")
-                self.playVideo(url: url)
+                DispatchQueue.main.async {
+                    self.playVideo(url: url)
+                }
             }
         }
     }
@@ -106,6 +118,8 @@ class ContentViewController: UIViewController {
     }
 }
 
+// PAGER VIEW
+
 extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return urls.count
@@ -121,5 +135,47 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     
     func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool {
         return false
+    }
+}
+
+extension ContentViewController: PlayerDelegate {
+    func playerReady(_ player: Player) {
+        print("player ready")
+    }
+    
+    func playerPlaybackStateDidChange(_ player: Player) {
+        return
+    }
+    
+    func playerBufferingStateDidChange(_ player: Player) {
+        return
+    }
+    
+    func playerBufferTimeDidChange(_ bufferTime: Double) {
+        return
+    }
+    
+    func player(_ player: Player, didFailWithError error: Error?) {
+        print("error with player: \(error?.localizedDescription)")
+    }
+}
+
+// VIDEO PLAYER
+
+extension ContentViewController: PlayerPlaybackDelegate {
+    func playerCurrentTimeDidChange(_ player: Player) {
+        return
+    }
+    
+    func playerPlaybackWillStartFromBeginning(_ player: Player) {
+        print("starting from beginning")
+    }
+    
+    func playerPlaybackDidEnd(_ player: Player) {
+        print("playback ended")
+    }
+    
+    func playerPlaybackWillLoop(_ player: Player) {
+        print("looping playback")
     }
 }

@@ -14,11 +14,13 @@ import Nuke
 class VideoService {
     static func generateVideo(from urls: [URL], completion: @escaping (URL?, Error?) -> Void) {
         
-        VideoGenerator.current.fileName = "vid"
-        VideoGenerator.current.maxVideoLengthInSeconds = 5
+        VideoGenerator.current.fileName = "test1"
+        VideoGenerator.current.videoDurationInSeconds = 7
         VideoGenerator.current.shouldOptimiseImageForVideo = true
+        VideoGenerator.current.videoBackgroundColor = .purple
         
         let images = urls.compactMap { UIImage(contentsOfFile: $0.path) }
+        
         VideoGenerator.current.generate(withImages: images, andAudios: [], andType: .multiple, { (prog) in
             print(prog)
         }, success: { (vidUrl) in
