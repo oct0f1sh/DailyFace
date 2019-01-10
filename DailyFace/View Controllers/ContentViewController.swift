@@ -26,17 +26,22 @@ class ContentViewController: UIViewController {
     
     // VARIABLES
     
-    var capturedImage: UIImage!
-    var capturedDate: String!
-    
     var urls: [URL] = FileService.getImages()
     
     var firstDate: String {
-        return urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+        if urls.count > 0 {
+            return urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+        } else {
+            return "no photos"
+        }
     }
     
     var lastDate: String {
-        return urls.last!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+        if urls.count > 0 {
+            return urls.last!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+        } else {
+            return "no photos"
+        }
     }
     
     // FUNCTIONS
@@ -85,10 +90,6 @@ class ContentViewController: UIViewController {
     // OVERRIDES
     
     override func viewDidLoad() {
-        imageView.image = capturedImage
-        
-        FileService.saveImage(capturedImage, filename: capturedDate)
-        
         setupPagerView()
     }
     

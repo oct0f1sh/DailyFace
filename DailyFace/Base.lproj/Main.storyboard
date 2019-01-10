@@ -100,12 +100,7 @@
                                             <constraint firstAttribute="height" constant="60" id="wb7-bQ-9rU"/>
                                             <constraint firstAttribute="width" constant="60" id="yjR-Bz-nxn"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="30"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <connections>
                                             <action selector="photoButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g1Z-Sb-i5w"/>
                                         </connections>
@@ -142,6 +137,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVn-bK-Pjh">
                                         <rect key="frame" x="192" y="821" width="30" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="G"/>
                                         <connections>
                                             <segue destination="hrO-jm-Ba1" kind="show" id="uOQ-QO-Itw"/>
                                         </connections>
@@ -169,6 +165,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="captureButton" destination="AT0-2f-pYj" id="d8w-Pt-2zq"/>
                         <outlet property="dateButton" destination="uBv-aB-VI1" id="B89-dk-jPS"/>
                         <outlet property="face" destination="Zop-7b-5FC" id="cVZ-ca-NU7"/>
                         <segue destination="hrO-jm-Ba1" kind="show" identifier="showPhoto" id="J7K-wz-tC6"/>
@@ -213,33 +210,36 @@
                                             <outlet property="delegate" destination="hrO-jm-Ba1" id="f9E-WD-pB2"/>
                                         </connections>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cef-6D-htR">
-                                        <rect key="frame" x="183.5" y="688" width="47" height="30"/>
-                                        <state key="normal" title="Retake"/>
-                                        <connections>
-                                            <action selector="retakeButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="tPb-6O-Ol1"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="198" translatesAutoresizingMaskIntoConstraints="NO" id="P1s-fM-6yq">
+                                        <rect key="frame" x="45.5" y="688" width="323" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cef-6D-htR">
+                                                <rect key="frame" x="0.0" y="0.0" width="54" height="30"/>
+                                                <state key="normal" title="Camera"/>
+                                                <connections>
+                                                    <action selector="retakeButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="tPb-6O-Ol1"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tt-ht-6vc">
+                                                <rect key="frame" x="252" y="0.0" width="71" height="30"/>
+                                                <state key="normal" title="Timelapse"/>
+                                                <connections>
+                                                    <action selector="videoButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="czu-A5-wrL"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="vTr-8R-55Q" firstAttribute="leading" secondItem="4yc-7H-zoN" secondAttribute="leading" id="6hG-oW-Uk8"/>
                                     <constraint firstAttribute="trailing" secondItem="vTr-8R-55Q" secondAttribute="trailing" id="pAy-at-a28"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tt-ht-6vc">
-                                <rect key="frame" x="335" y="820" width="40" height="30"/>
-                                <state key="normal" title="Video"/>
-                                <connections>
-                                    <action selector="videoButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="czu-A5-wrL"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="4yc-7H-zoN" firstAttribute="leading" secondItem="Doe-Yl-V39" secondAttribute="leading" id="7Pm-W3-zbm"/>
-                            <constraint firstItem="Doe-Yl-V39" firstAttribute="trailing" secondItem="3tt-ht-6vc" secondAttribute="trailing" constant="39" id="GDZ-a1-xOr"/>
                             <constraint firstAttribute="bottomMargin" secondItem="4yc-7H-zoN" secondAttribute="bottom" constant="50" id="Sbi-9b-pva"/>
-                            <constraint firstItem="Doe-Yl-V39" firstAttribute="bottom" secondItem="3tt-ht-6vc" secondAttribute="bottom" constant="12" id="VEp-jf-xqD"/>
                             <constraint firstItem="Doe-Yl-V39" firstAttribute="trailing" secondItem="4yc-7H-zoN" secondAttribute="trailing" id="ffn-Rw-Bdg"/>
                             <constraint firstItem="4yc-7H-zoN" firstAttribute="top" secondItem="jfJ-wi-Z2s" secondAttribute="topMargin" constant="50" id="vS8-2b-egj"/>
                         </constraints>

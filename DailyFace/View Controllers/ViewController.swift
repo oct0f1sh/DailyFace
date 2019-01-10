@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var face: UIStackView!
+    @IBOutlet weak var captureButton: UIButton!
     
     // VARIABLES
     
@@ -95,12 +96,38 @@ class ViewController: UIViewController {
         }
     }
     
+    func animateCaptureButton() {
+        UIView.animate(withDuration: 0.15, animations: {
+            self.captureButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+            self.captureButton.backgroundColor = .white
+//            self.captureButton.setTitle("✔️", for: .normal)
+        }) { (_) in
+            UIView.animate(withDuration: 0.15, animations: {
+                self.captureButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+                self.captureButton.backgroundColor = .clear
+//                self.captureButton.setTitle("", for: .normal)
+            })
+        }
+    }
+    
+    func setupCaptureButton() {
+        captureButton.layer.cornerRadius = 30
+        captureButton.layer.borderWidth = 4
+        captureButton.layer.borderColor = UIColor.white.cgColor
+        captureButton.layer.backgroundColor = UIColor.clear.cgColor
+    }
+    
     // IBACTIONS
     
     @IBAction func photoButtonTapped(_ sender: UIButton) {
+        animateCaptureButton()
+        
         let settings = AVCapturePhotoSettings()
         
         photoOutput?.capturePhoto(with: settings, delegate: self)
+        
+        // if a new photo is taken while still on this view, then get a new filename
+        setupDateLabel()
     }
     
     @IBAction func unwindToCamera(segue: UIStoryboardSegue) {}
@@ -109,6 +136,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         setupDateLabel()
+        setupCaptureButton()
         setupCaptureSession()
         setupDevice()
         setupInputOutput()
@@ -124,8 +152,6 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPhoto" {
             let destination: ContentViewController = segue.destination as! ContentViewController
-            destination.capturedImage = image
-            destination.capturedDate = dateString
         }
     }
 }
@@ -134,8 +160,10 @@ extension ViewController: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let imageData = photo.fileDataRepresentation() {
             image = UIImage(data: imageData)?.resizeImageUsingVImage(size: CGSize(width: 900, height: 1200))
+            
+            FileService.saveImage(image!, filename: dateString!)
         }
         
-        self.performSegue(withIdentifier: "showPhoto", sender: self)
+//        self.performSegue(withIdentifier: "showPhoto", sender: self)
     }
 }
