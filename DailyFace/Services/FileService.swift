@@ -34,6 +34,6 @@ class FileService {
     
     static func getImages() -> [URL] {
         // sort urls by date excluding any videos
-        return try! FileManager.default.contentsOfDirectory(at: FileService.dir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles).sorted(by: {$0.path < $1.path}).filter({$0.pathExtension != "m4v"})
+        return try! FileManager.default.contentsOfDirectory(at: FileService.dir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles).sorted(by: {$0.path < $1.path}).filter({$0.pathExtension != "mov" && $0.pathExtension != "m4v"})
     }
 }

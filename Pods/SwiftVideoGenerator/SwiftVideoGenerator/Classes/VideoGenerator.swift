@@ -671,7 +671,7 @@ public class VideoGenerator: NSObject {
   fileprivate var minSize = CGSize.zero
   
   /// private property to store the minimum duration for a single video
-  fileprivate var minSingleVideoDuration: Double = 3.0
+  fileprivate var minSingleVideoDuration: Double = 1
   
   /// private property to store the video resource for reversing
   fileprivate var reversedVideoURL: URL?

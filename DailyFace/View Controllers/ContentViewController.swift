@@ -173,6 +173,7 @@ extension ContentViewController: PlayerPlaybackDelegate {
     
     func playerPlaybackDidEnd(_ player: Player) {
         print("playback ended")
+        self.player.playFromBeginning()
     }
     
     func playerPlaybackWillLoop(_ player: Player) {
