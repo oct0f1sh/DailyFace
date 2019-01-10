@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import FSPagerView
 import Nuke
-//import AVFoundation
-import Player
+import AVKit
 
 class ContentViewController: UIViewController {
     
@@ -31,8 +30,6 @@ class ContentViewController: UIViewController {
     var capturedDate: String!
     
     var urls: [URL] = FileService.getImages()
-    
-    let player = Player()
     
     var firstDate: String {
         return urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
@@ -58,23 +55,13 @@ class ContentViewController: UIViewController {
     }
     
     func playVideo(url: URL) {
-//        let player = AVPlayer(url: url)
-//        let playerLayer = AVPlayerLayer(player: player)
-//        playerLayer.frame = self.view.bounds
-//
-//        self.view.layer.addSublayer(playerLayer)
-//        player.play()
-        self.player.playerDelegate = self
-        self.player.playbackDelegate = self
-        self.player.view.frame = self.view.bounds
+        let player = AVPlayer(url: url)
+        let playerVC = AVPlayerViewController()
+        playerVC.player = player
         
-        self.addChild(self.player)
-        self.view.addSubview(self.player.view)
-        self.player.didMove(toParent: self)
-        
-        self.player.url = url //URL(string: "https://v.cdn.vine.co/r/videos/AA3C120C521177175800441692160_38f2cbd1ffb.1.5.13763579289575020226.mp4")
-        
-        self.player.playFromBeginning()
+        self.present(playerVC, animated: true) {
+            player.play()
+        }
     }
     
     // IBACTIONS
@@ -157,26 +144,5 @@ extension ContentViewController: PlayerDelegate {
     
     func player(_ player: Player, didFailWithError error: Error?) {
         print("error with player: \(error?.localizedDescription)")
-    }
-}
-
-// VIDEO PLAYER
-
-extension ContentViewController: PlayerPlaybackDelegate {
-    func playerCurrentTimeDidChange(_ player: Player) {
-        return
-    }
-    
-    func playerPlaybackWillStartFromBeginning(_ player: Player) {
-        print("starting from beginning")
-    }
-    
-    func playerPlaybackDidEnd(_ player: Player) {
-        print("playback ended")
-        self.player.playFromBeginning()
-    }
-    
-    func playerPlaybackWillLoop(_ player: Player) {
-        print("looping playback")
     }
 }

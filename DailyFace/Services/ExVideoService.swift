@@ -6,16 +6,18 @@ let kFailedToStartAssetWriterError = 0
 let kFailedToAppendPixelBufferError = 1
 
 class TimeLapseBuilder: NSObject {
-    let photoURLs: [URL]
+    let photos: [UIImage]
     var videoWriter: AVAssetWriter?
     
-    init(photoURLs: [URL]) {
-        self.photoURLs = photoURLs
+    let inputSize = CGSize(width: 1080, height: 1920)
+    let outputSize = CGSize(width: 720, height: 1280)
+    
+    init(photos: [UIImage]) {
+        self.photos = photos
     }
     
     func build(_ progress: @escaping ((Progress) -> Void), success: @escaping ((URL) -> Void), failure: @escaping ((NSError) -> Void)) {
-        let inputSize = CGSize(width: 4000, height: 3000)
-        let outputSize = CGSize(width: 1280, height: 720)
+        
         var error: NSError?
         
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
@@ -63,17 +65,17 @@ class TimeLapseBuilder: NSObject {
                 videoWriterInput.requestMediaDataWhenReady(on: media_queue) {
                     let fps: Int32 = 30
                     let frameDuration = CMTimeMake(value: 1, timescale: fps)
-                    let currentProgress = Progress(totalUnitCount: Int64(self.photoURLs.count))
+                    let currentProgress = Progress(totalUnitCount: Int64(self.photos.count))
                     
                     var frameCount: Int64 = 0
-                    var remainingPhotoURLs = [URL](self.photoURLs)
+                    var remainingPhotos = [UIImage](self.photos)
                     
-                    while videoWriterInput.isReadyForMoreMediaData && !remainingPhotoURLs.isEmpty {
-                        let nextPhotoURL = remainingPhotoURLs.remove(at: 0)
+                    while videoWriterInput.isReadyForMoreMediaData && !remainingPhotos.isEmpty {
+                        let nextPhoto = remainingPhotos.remove(at: 0)
                         let lastFrameTime = CMTimeMake(value: frameCount, timescale: fps)
                         let presentationTime = frameCount == 0 ? lastFrameTime : CMTimeAdd(lastFrameTime, frameDuration)
                         
-                        if !self.appendPixelBufferForImageAtURL(nextPhotoURL, pixelBufferAdaptor: pixelBufferAdaptor, presentationTime: presentationTime) {
+                        if !self.appendPixelBufferForImage(nextPhoto, pixelBufferAdaptor: pixelBufferAdaptor, presentationTime: presentationTime) {
                             error = NSError(
                                 domain: kErrorDomain,
                                 code: kFailedToAppendPixelBufferError,
@@ -114,12 +116,11 @@ class TimeLapseBuilder: NSObject {
         }
     }
     
-    func appendPixelBufferForImageAtURL(_ url: URL, pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor, presentationTime: CMTime) -> Bool {
+    func appendPixelBufferForImage(_ image: UIImage, pixelBufferAdaptor: AVAssetWriterInputPixelBufferAdaptor, presentationTime: CMTime) -> Bool {
         var appendSucceeded = false
         
         autoreleasepool {
-            if let imageData = try? Data(contentsOf: url),
-                let image = UIImage(data: imageData)?.scaleImageToSize(newSize: CGSize(width: 300, height: 400)),
+            if let image = image.rotate(radians: 2 * .pi)!.scaleImageToSize(newSize: CGSize(width: 300, height: 400)),
                 let pixelBufferPool = pixelBufferAdaptor.pixelBufferPool {
                 let pixelBufferPointer = UnsafeMutablePointer<CVPixelBuffer?>.allocate(capacity: 1)
                 let status: CVReturn = CVPixelBufferPoolCreatePixelBuffer(

@@ -30,7 +30,7 @@ class VideoService {
 //            print("error generating video: \(err)")
 //            completion(nil, err)
 //        }
-        let builder = TimeLapseBuilder(photoURLs: urls.compactMap({$0.path}))
+        let builder = TimeLapseBuilder(photos: urls.compactMap({ UIImage(contentsOfFile: $0.path ) }))
         
         builder.build({ (prog) in
             print(prog)
