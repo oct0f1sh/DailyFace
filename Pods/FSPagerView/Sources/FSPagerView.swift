@@ -219,7 +219,7 @@ open class FSPagerView: UIView,UICollectionViewDataSource,UICollectionViewDelega
     // MARK: - Private properties
     
     internal weak var collectionViewLayout: FSPagerViewLayout!
-    internal weak var collectionView: FSPagerCollectionView!
+    public weak var collectionView: FSPagerCollectionView!
     internal weak var contentView: UIView!
     internal var timer: Timer?
     internal var numberOfItems: Int = 0

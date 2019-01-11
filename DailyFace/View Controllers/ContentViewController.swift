@@ -18,9 +18,9 @@ class ContentViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var pagerView: FSPagerView! {
+    @IBOutlet weak var pagerView: CollectionPagerView! {
         didSet {
-            self.pagerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "pagerCell")
+            self.pagerView.register(PagerViewCollectionViewCell.self, forCellWithReuseIdentifier: "pagerCell")
         }
     }
     
@@ -49,6 +49,8 @@ class ContentViewController: UIViewController {
     func setupPagerView() {
         pagerView.transformer = FSPagerViewTransformer(type: .overlap)
         pagerView.itemSize = CGSize(width: 270, height: 375)
+        pagerView.collectionView.clipsToBounds = false
+        pagerView.editDelegate = self
     }
     
     func setupDateLabel() {
@@ -126,5 +128,14 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     
     func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool {
         return false
+    }
+}
+
+extension ContentViewController: CollectionPagerViewEditDelegate {
+    func collection(_ collectionPagerView: CollectionPagerView, didSwipeUpToDelete cell: PagerViewCollectionViewCell) {
+        
+        let index = collectionPagerView.index(for: cell)
+        
+        //remove the data by the given index
     }
 }
