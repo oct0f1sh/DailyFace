@@ -63,7 +63,7 @@ class VideoGenerator: NSObject {
                 let media_queue = DispatchQueue(label: "mediaInputQueue")
                 
                 videoWriterInput.requestMediaDataWhenReady(on: media_queue) {
-                    let fps: Int32 = 30
+                    let fps: Int32 = 15
                     let frameDuration = CMTimeMake(value: 1, timescale: fps)
                     let currentProgress = Progress(totalUnitCount: Int64(self.photos.count))
                     
