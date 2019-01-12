@@ -92,15 +92,28 @@ class ContentViewController: UIViewController {
     }
     
     @IBAction func videoButtonTapped(_ sender: Any) {
-        VideoService.generateVideo(from: urls) { (vidUrl, err) in
+        VideoService.generateVideo(from: urls, completion: { (url, err) in
             guard err == nil else { return }
             
-            if let url = vidUrl {
+            if let url = url {
                 DispatchQueue.main.async {
                     self.playVideo(url: url)
                 }
             }
+            
+        }) { (prog) in
+            // Update activity indicator
+            print("\(prog.completedUnitCount) of \(prog.totalUnitCount)")
         }
+//        VideoService.generateVideo(from: urls) { (vidUrl, err) in
+//            guard err == nil else { return }
+//
+//            if let url = vidUrl {
+//                DispatchQueue.main.async {
+//                    self.playVideo(url: url)
+//                }
+//            }
+//        }
     }
     
     // OVERRIDES

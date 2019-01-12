@@ -1,24 +1,28 @@
 PODS:
   - FSPagerView (0.8.2)
+  - JGProgressHUD (2.0.3)
   - Nuke (7.5.2)
   - SwiftVideoGenerator (1.2.2)
 
 DEPENDENCIES:
   - FSPagerView
+  - JGProgressHUD
   - Nuke (~> 7.0)
   - SwiftVideoGenerator
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FSPagerView
+    - JGProgressHUD
     - Nuke
     - SwiftVideoGenerator
 
 SPEC CHECKSUMS:
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
   SwiftVideoGenerator: 31d4189cfd7d61a69f82ef5ed984a5d477f9f02a
 
-PODFILE CHECKSUM: 8a6ea22e5c6f3b05c7293b4566428d65c8797ecd
+PODFILE CHECKSUM: d46b95da930ba89aa70b5a76c2b683a7c23b445c
 
 COCOAPODS: 1.5.3

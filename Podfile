@@ -9,4 +9,5 @@ target 'DailyFace' do
   pod 'FSPagerView'
   pod 'Nuke', '~> 7.0'
   pod 'SwiftVideoGenerator'
+  pod 'JGProgressHUD'
 end
