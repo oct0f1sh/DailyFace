@@ -11,6 +11,7 @@ import UIKit
 import FSPagerView
 import Nuke
 import AVKit
+import JGProgressHUD
 
 class ContentViewController: UIViewController {
     
@@ -27,6 +28,8 @@ class ContentViewController: UIViewController {
     // VARIABLES
     
     var urls: [URL] = FileService.getImages()
+    
+    var hud: JGProgressHUD!
     
     var firstDate: String {
         if urls.count > 0 {
@@ -85,6 +88,25 @@ class ContentViewController: UIViewController {
         pagerView.reloadData()
     }
     
+    func setupProgressIndicator() {
+        DispatchQueue.main.async {
+            self.hud = JGProgressHUD(style: .dark)
+            self.hud.indicatorView = JGProgressHUDPieIndicatorView()
+            self.hud.textLabel.text = "Generating timelapse"
+            self.hud.progress = 0
+            self.hud.show(in: self.view)
+        }
+    }
+    
+    func updateProgressIndicator(progress: Double) {
+        self.hud.progress = Float(progress)
+    }
+    
+    func endProgressIndicator() {
+        self.hud.progress = 1
+        self.hud.dismiss()
+    }
+    
     // IBACTIONS
     
     @IBAction func retakeButtonTapped(_ sender: UIButton) {
@@ -103,17 +125,18 @@ class ContentViewController: UIViewController {
             
         }) { (prog) in
             // Update activity indicator
+            if prog.completedUnitCount == 1 {
+                // show activity indicator
+                self.setupProgressIndicator()
+            } else if prog.completedUnitCount > 1 && prog.completedUnitCount < prog.totalUnitCount {
+                // update activity indicator
+                self.updateProgressIndicator(progress: prog.fractionCompleted)
+            } else {
+                // update activity indicator and remove it
+                self.endProgressIndicator()
+            }
             print("\(prog.completedUnitCount) of \(prog.totalUnitCount)")
         }
-//        VideoService.generateVideo(from: urls) { (vidUrl, err) in
-//            guard err == nil else { return }
-//
-//            if let url = vidUrl {
-//                DispatchQueue.main.async {
-//                    self.playVideo(url: url)
-//                }
-//            }
-//        }
     }
     
     // OVERRIDES
