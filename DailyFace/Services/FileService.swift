@@ -36,4 +36,19 @@ class FileService {
         // sort urls by date excluding any videos
         return try! FileManager.default.contentsOfDirectory(at: FileService.dir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles).sorted(by: {$0.path < $1.path}).filter({$0.pathExtension != "mov" && $0.pathExtension != "m4v"})
     }
+    
+    static func deleteImage(url: URL, completion: @escaping () -> Void) {
+        do {
+            if FileManager.default.fileExists(atPath: url.path) {
+                // Delete file
+                try FileManager.default.removeItem(atPath: url.path)
+                print("Successfully deleted file")
+                completion()
+            } else {
+                print("File does not exist")
+            }
+        } catch {
+            print("Error deleting file: \(error.localizedDescription)")
+        }
+    }
 }

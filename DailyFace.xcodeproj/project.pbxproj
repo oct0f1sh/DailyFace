@@ -20,8 +20,8 @@
 		AE13045421E682F40024B2A1 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045321E682F40024B2A1 /* VideoService.swift */; };
 		AE13045621E7C4080024B2A1 /* VideoGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045521E7C4080024B2A1 /* VideoGenerator.swift */; };
 		AE13045921E7C8E40024B2A1 /* Scale+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045821E7C8E40024B2A1 /* Scale+UIImage.swift */; };
-		AE13045C21E91F170024B2A1 /* PagerViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045B21E91F170024B2A1 /* PagerViewCollectionViewCell.swift */; };
-		AE13045E21E921E40024B2A1 /* CollectionPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045D21E921E40024B2A1 /* CollectionPagerView.swift */; };
+		AE13045C21E91F170024B2A1 /* ContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045B21E91F170024B2A1 /* ContentViewCell.swift */; };
+		AE13045E21E921E40024B2A1 /* ContentPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045D21E921E40024B2A1 /* ContentPagerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +41,8 @@
 		AE13045321E682F40024B2A1 /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		AE13045521E7C4080024B2A1 /* VideoGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGenerator.swift; sourceTree = "<group>"; };
 		AE13045821E7C8E40024B2A1 /* Scale+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scale+UIImage.swift"; sourceTree = "<group>"; };
-		AE13045B21E91F170024B2A1 /* PagerViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagerViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		AE13045D21E921E40024B2A1 /* CollectionPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionPagerView.swift; sourceTree = "<group>"; };
+		AE13045B21E91F170024B2A1 /* ContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewCell.swift; sourceTree = "<group>"; };
+		AE13045D21E921E40024B2A1 /* ContentPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPagerView.swift; sourceTree = "<group>"; };
 		D86E838C3426E32C5F9DA3EA /* Pods-DailyFace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyFace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyFace/Pods-DailyFace.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,8 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				AE13045121E5971F0024B2A1 /* ImageCell.swift */,
-				AE13045B21E91F170024B2A1 /* PagerViewCollectionViewCell.swift */,
-				AE13045D21E921E40024B2A1 /* CollectionPagerView.swift */,
+				AE13045B21E91F170024B2A1 /* ContentViewCell.swift */,
+				AE13045D21E921E40024B2A1 /* ContentPagerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,14 +282,14 @@
 				AE13045421E682F40024B2A1 /* VideoService.swift in Sources */,
 				AE13044F21E565010024B2A1 /* ImagesViewController.swift in Sources */,
 				AE13045921E7C8E40024B2A1 /* Scale+UIImage.swift in Sources */,
-				AE13045E21E921E40024B2A1 /* CollectionPagerView.swift in Sources */,
+				AE13045E21E921E40024B2A1 /* ContentPagerView.swift in Sources */,
 				AE0BBFDD21E5248E0065F72A /* ViewController.swift in Sources */,
 				AE13044D21E55DD20024B2A1 /* FileService.swift in Sources */,
 				AE13045621E7C4080024B2A1 /* VideoGenerator.swift in Sources */,
 				AE13044921E536D70024B2A1 /* ContentViewController.swift in Sources */,
 				AE0BBFDB21E5248E0065F72A /* AppDelegate.swift in Sources */,
 				AE13045221E5971F0024B2A1 /* ImageCell.swift in Sources */,
-				AE13045C21E91F170024B2A1 /* PagerViewCollectionViewCell.swift in Sources */,
+				AE13045C21E91F170024B2A1 /* ContentViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

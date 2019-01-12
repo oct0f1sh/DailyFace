@@ -199,7 +199,7 @@
                                             <constraint firstAttribute="height" constant="375" id="kMC-oQ-chT"/>
                                         </constraints>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTr-8R-55Q" customClass="FSPagerView" customModule="FSPagerView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vTr-8R-55Q" customClass="ContentPagerView" customModule="DailyFace" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="172.5" width="414" height="375"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

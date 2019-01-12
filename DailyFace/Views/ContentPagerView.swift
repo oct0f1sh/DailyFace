@@ -9,19 +9,19 @@
 import UIKit
 import FSPagerView
 
-protocol CollectionPagerViewEditDelegate: class {
+protocol ContentPagerViewEditDelegate: class {
     // collection view did swipe to delete function
-    func collection(_ collectionPagerView: CollectionPagerView, didSwipeUpToDelete cell: PagerViewCollectionViewCell)
+    func collection(_ collectionPagerView: ContentPagerView, didSwipeUpToDelete cell: ContentViewCell)
 }
 
-class CollectionPagerView: FSPagerView {
+class ContentPagerView: FSPagerView {
     
-    weak var editDelegate: CollectionPagerViewEditDelegate?
+    weak var editDelegate: ContentPagerViewEditDelegate?
 
     override func dequeueReusableCell(withReuseIdentifier identifier: String, at index: Int) -> FSPagerViewCell {
         let cellFromSuper = super.dequeueReusableCell(withReuseIdentifier: identifier, at: index)
         
-        guard let cell = cellFromSuper as? PagerViewCollectionViewCell else {
+        guard let cell = cellFromSuper as? ContentViewCell else {
             assertionFailure("failed to cast into PagerViewCollectionViewCell")
             
             return cellFromSuper
@@ -34,8 +34,8 @@ class CollectionPagerView: FSPagerView {
 
 }
 
-extension CollectionPagerView: PagerViewCollectionViewCellDelegate {
-    func pageViewDidSwipeToDelete(_ cell: PagerViewCollectionViewCell) {
+extension ContentPagerView: ContentViewCellDelegate {
+    func pageViewDidSwipeToDelete(_ cell: ContentViewCell) {
         editDelegate?.collection(self, didSwipeUpToDelete: cell)
     }
 }

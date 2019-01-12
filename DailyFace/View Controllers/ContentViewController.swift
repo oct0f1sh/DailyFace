@@ -18,9 +18,9 @@ class ContentViewController: UIViewController {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var pagerView: CollectionPagerView! {
+    @IBOutlet weak var pagerView: ContentPagerView! {
         didSet {
-            self.pagerView.register(PagerViewCollectionViewCell.self, forCellWithReuseIdentifier: "pagerCell")
+            self.pagerView.register(ContentViewCell.self, forCellWithReuseIdentifier: "pagerCell")
         }
     }
     
@@ -69,6 +69,21 @@ class ContentViewController: UIViewController {
         self.present(playerVC, animated: true) {
             player.play()
         }
+    }
+    
+    func animateDelete(cell: ContentViewCell) {
+        UIView.animate(withDuration: 0.5, animations: {
+            cell.alpha = 0
+        }) { (_) in
+            let nextCellIndex = self.urls.count - 1
+        
+            self.pagerView.scrollToItem(at: nextCellIndex, animated: true)
+            // reset next cell to origin
+            self.pagerView.cellForItem(at: nextCellIndex)?.bounds.origin.y = 0
+        }
+        urls = FileService.getImages()
+        
+        pagerView.reloadData()
     }
     
     // IBACTIONS
@@ -131,11 +146,16 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     }
 }
 
-extension ContentViewController: CollectionPagerViewEditDelegate {
-    func collection(_ collectionPagerView: CollectionPagerView, didSwipeUpToDelete cell: PagerViewCollectionViewCell) {
+extension ContentViewController: ContentPagerViewEditDelegate {
+    func collection(_ collectionPagerView: ContentPagerView, didSwipeUpToDelete cell: ContentViewCell) {
         
         let index = collectionPagerView.index(for: cell)
+        let url = urls[index]
         
-        //remove the data by the given index
+        FileService.deleteImage(url: url) {
+            DispatchQueue.main.async {
+                self.animateDelete(cell: cell)
+            }
+        }
     }
 }
