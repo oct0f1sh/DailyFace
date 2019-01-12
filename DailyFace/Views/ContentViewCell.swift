@@ -29,7 +29,7 @@ class ContentViewCell: FSPagerViewCell {
     
     private func commonInit() {
         let gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panGesutre(_:)))
-        contentView.addGestureRecognizer(gestureRecognizer)
+//        contentView.addGestureRecognizer(gestureRecognizer)
     }
     
     private var offset: CGFloat?

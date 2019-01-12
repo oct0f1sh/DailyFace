@@ -22,6 +22,7 @@
 		AE13045921E7C8E40024B2A1 /* Scale+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045821E7C8E40024B2A1 /* Scale+UIImage.swift */; };
 		AE13045C21E91F170024B2A1 /* ContentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045B21E91F170024B2A1 /* ContentViewCell.swift */; };
 		AE13045E21E921E40024B2A1 /* ContentPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE13045D21E921E40024B2A1 /* ContentPagerView.swift */; };
+		AE2B592221EAA13F00BA4203 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B592121EAA13F00BA4203 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		AE13045821E7C8E40024B2A1 /* Scale+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Scale+UIImage.swift"; sourceTree = "<group>"; };
 		AE13045B21E91F170024B2A1 /* ContentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewCell.swift; sourceTree = "<group>"; };
 		AE13045D21E921E40024B2A1 /* ContentPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentPagerView.swift; sourceTree = "<group>"; };
+		AE2B592121EAA13F00BA4203 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		D86E838C3426E32C5F9DA3EA /* Pods-DailyFace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyFace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DailyFace/Pods-DailyFace.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 		AE13045A21E7D6E00024B2A1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AE2B592121EAA13F00BA4203 /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				AE13045621E7C4080024B2A1 /* VideoGenerator.swift in Sources */,
 				AE13044921E536D70024B2A1 /* ContentViewController.swift in Sources */,
 				AE0BBFDB21E5248E0065F72A /* AppDelegate.swift in Sources */,
+				AE2B592221EAA13F00BA4203 /* DateHelper.swift in Sources */,
 				AE13045221E5971F0024B2A1 /* ImageCell.swift in Sources */,
 				AE13045C21E91F170024B2A1 /* ContentViewCell.swift in Sources */,
 			);

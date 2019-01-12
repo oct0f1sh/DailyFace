@@ -30,7 +30,8 @@ class ContentViewController: UIViewController {
     
     var firstDate: String {
         if urls.count > 0 {
-            return urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+            let dateString = urls.first!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+            return DateHelper.formatDate(date: dateString)
         } else {
             return "no photos"
         }
@@ -38,7 +39,8 @@ class ContentViewController: UIViewController {
     
     var lastDate: String {
         if urls.count > 0 {
-            return urls.last!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+            let dateString = urls.last!.path.split(separator: "/").last!.description.split(separator: ":")[0].description
+            return DateHelper.formatDate(date: dateString)
         } else {
             return "no photos"
         }
@@ -57,7 +59,7 @@ class ContentViewController: UIViewController {
         if firstDate == lastDate {
             dateLabel.text = firstDate
         } else {
-            dateLabel.text = "\(firstDate) to \(lastDate)"
+            dateLabel.text = "\(firstDate) - \(lastDate)"
         }
     }
     
@@ -72,15 +74,12 @@ class ContentViewController: UIViewController {
     }
     
     func animateDelete(cell: ContentViewCell) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 4) {
             cell.alpha = 0
-        }) { (_) in
-            let nextCellIndex = self.urls.count - 1
-        
-            self.pagerView.scrollToItem(at: nextCellIndex, animated: true)
-            // reset next cell to origin
-            self.pagerView.cellForItem(at: nextCellIndex)?.bounds.origin.y = 0
         }
+        
+        self.pagerView.scrollToItem(at: self.urls.count - 1, animated: true)
+        
         urls = FileService.getImages()
         
         pagerView.reloadData()
@@ -152,10 +151,8 @@ extension ContentViewController: ContentPagerViewEditDelegate {
         let index = collectionPagerView.index(for: cell)
         let url = urls[index]
         
-        FileService.deleteImage(url: url) {
-            DispatchQueue.main.async {
-                self.animateDelete(cell: cell)
-            }
-        }
+        animateDelete(cell: cell)
+        
+        FileService.deleteImage(url: url) { }
     }
 }
