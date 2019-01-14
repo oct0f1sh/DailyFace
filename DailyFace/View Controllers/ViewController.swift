@@ -11,13 +11,13 @@ import AVFoundation
 
 class ViewController: UIViewController {
     
-    // IBOUTLETS
+    // MARK: IBOUTLETS
     
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var face: UIStackView!
     @IBOutlet weak var captureButton: UIButton!
     
-    // VARIABLES
+    // MARK: VARIABLES
     
     var captureSession = AVCaptureSession()
     var frontCamera: AVCaptureDevice?
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     var dateString: String?
     
-    // FUNCTIONS
+    // MARK: FUNCTIONS
     
     func setupCaptureSession() {
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         captureButton.layer.backgroundColor = UIColor.clear.cgColor
     }
     
-    // IBACTIONS
+    // MARK: IBACTIONS
     
     @IBAction func photoButtonTapped(_ sender: UIButton) {
         animateCaptureButton()
@@ -134,7 +134,7 @@ class ViewController: UIViewController {
     
     @IBAction func unwindToCamera(segue: UIStoryboardSegue) {}
     
-    // OVERRIDES
+    // MARK: OVERRIDES
     
     override func viewDidLoad() {
         setupDateLabel()

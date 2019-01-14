@@ -15,17 +15,18 @@ import JGProgressHUD
 
 class ContentViewController: UIViewController {
     
-    // IBOUTLETS
+    // MARK: MARK: IBOUTLETS
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var timelapseButton: UIButton!
     @IBOutlet weak var pagerView: ContentPagerView! {
         didSet {
             self.pagerView.register(ContentViewCell.self, forCellWithReuseIdentifier: "pagerCell")
         }
     }
     
-    // VARIABLES
+    // MARK: VARIABLES
     
     var urls: [URL] = FileService.getImages()
     
@@ -49,7 +50,7 @@ class ContentViewController: UIViewController {
         }
     }
     
-    // FUNCTIONS
+    // MARK: FUNCTIONS
     
     func setupPagerView() {
         pagerView.transformer = FSPagerViewTransformer(type: .overlap)
@@ -95,19 +96,25 @@ class ContentViewController: UIViewController {
             self.hud.textLabel.text = "Generating timelapse"
             self.hud.progress = 0
             self.hud.show(in: self.view)
+            
+            self.timelapseButton.isUserInteractionEnabled = false
         }
     }
     
     func updateProgressIndicator(progress: Double) {
-        self.hud.progress = Float(progress)
+        DispatchQueue.main.async {
+            self.hud.progress = Float(progress)
+        }
     }
     
     func endProgressIndicator() {
-        self.hud.progress = 1
-        self.hud.dismiss()
+        DispatchQueue.main.async {
+            self.hud.progress = 1
+            self.hud.dismiss()
+        }
     }
     
-    // IBACTIONS
+    // MARK: IBACTIONS
     
     @IBAction func retakeButtonTapped(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
@@ -120,6 +127,8 @@ class ContentViewController: UIViewController {
             if let url = url {
                 DispatchQueue.main.async {
                     self.playVideo(url: url)
+                    
+                    self.timelapseButton.isUserInteractionEnabled = true
                 }
             }
             
@@ -139,7 +148,7 @@ class ContentViewController: UIViewController {
         }
     }
     
-    // OVERRIDES
+    // MARK: OVERRIDES
     
     override func viewDidLoad() {
         setupPagerView()
@@ -158,7 +167,7 @@ class ContentViewController: UIViewController {
     }
 }
 
-// PAGER VIEW
+// MARK: PAGER VIEW
 
 extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
