@@ -71,7 +71,7 @@ class ContentViewController: UIViewController {
         let player = AVPlayer(url: url)
         let playerVC = AVPlayerViewController()
         playerVC.player = player
-        
+
         self.present(playerVC, animated: true) {
             player.play()
         }
@@ -114,6 +114,12 @@ class ContentViewController: UIViewController {
         }
     }
     
+    func presentTimelapseView() {
+        let vie = TimelapseView(frame: CGRect(x: 35, y: 50, width: 300, height: 430))
+        
+        self.view.addSubview(vie)
+    }
+    
     // MARK: IBACTIONS
     
     @IBAction func retakeButtonTapped(_ sender: UIButton) {
@@ -121,17 +127,18 @@ class ContentViewController: UIViewController {
     }
     
     @IBAction func videoButtonTapped(_ sender: Any) {
+//        self.presentTimelapseView()
         VideoService.generateVideo(from: urls, completion: { (url, err) in
             guard err == nil else { return }
-            
+
             if let url = url {
                 DispatchQueue.main.async {
                     self.playVideo(url: url)
-                    
+
                     self.timelapseButton.isUserInteractionEnabled = true
                 }
             }
-            
+
         }) { (prog) in
             // Update activity indicator
             if prog.completedUnitCount == 1 {
