@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SwiftVideoGenerator
 import Nuke
 
 class VideoService {
