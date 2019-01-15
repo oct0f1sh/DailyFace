@@ -12,6 +12,7 @@ import AVKit
 
 protocol TimelapseViewDelegate: class {
     func didShare(item videoUrl: URL)
+    func didDelete(item contentURL: URL)
 }
 
 class TimelapseView: UIView {
@@ -23,7 +24,7 @@ class TimelapseView: UIView {
     var backgroundView: UIView!
     var playerView: UIView!
     
-    var videoUrl: URL!
+    var contentURL: URL!
     
     weak var delegate: TimelapseViewDelegate?
 
@@ -57,7 +58,7 @@ class TimelapseView: UIView {
     func layoutVideoPlayer() {
         playerView = UIView(frame: CGRect(x: borderWidth, y: borderWidth, width: self.popupView.bounds.width - (borderWidth * 2), height: self.popupView.bounds.height - (30 + borderWidth * 2)))
         
-        let player = AVPlayer(url: videoUrl)
+        let player = AVPlayer(url: contentURL)
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = playerView.bounds
         playerView.layer.addSublayer(playerLayer)
@@ -102,6 +103,13 @@ class TimelapseView: UIView {
     
     @objc
     func shareButtonTapped(_ sender: UIButton) {
-        delegate?.didShare(item: videoUrl)
+        delegate?.didShare(item: contentURL)
+    }
+    
+    @objc
+    func deleteButtonTapped(_ sender: UIButton) {
+        self.removeFromSuperview()
+        
+        delegate?.didDelete(item: contentURL)
     }
 }

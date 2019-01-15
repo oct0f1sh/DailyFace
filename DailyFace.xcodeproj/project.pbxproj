@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6819D5A2A716D161353781CC /* Pods_DailyFace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DE616BBA530799E28C8B4C /* Pods_DailyFace.framework */; };
 		AE001D9321ED335300284BB5 /* TimelapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE001D9221ED335300284BB5 /* TimelapseView.swift */; };
+		AE001D9521EE7F2400284BB5 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE001D9421EE7F2400284BB5 /* PhotoView.swift */; };
 		AE0BBFDB21E5248E0065F72A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BBFDA21E5248E0065F72A /* AppDelegate.swift */; };
 		AE0BBFDD21E5248E0065F72A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BBFDC21E5248E0065F72A /* ViewController.swift */; };
 		AE0BBFE021E5248E0065F72A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0BBFDE21E5248E0065F72A /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		70DC1424B13BBF05846505D0 /* Pods-DailyFace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyFace.release.xcconfig"; path = "Pods/Target Support Files/Pods-DailyFace/Pods-DailyFace.release.xcconfig"; sourceTree = "<group>"; };
 		A8DE616BBA530799E28C8B4C /* Pods_DailyFace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyFace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE001D9221ED335300284BB5 /* TimelapseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelapseView.swift; sourceTree = "<group>"; };
+		AE001D9421EE7F2400284BB5 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		AE0BBFD721E5248E0065F72A /* DailyFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE0BBFDA21E5248E0065F72A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE0BBFDC21E5248E0065F72A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				AE13045B21E91F170024B2A1 /* ContentViewCell.swift */,
 				AE13045D21E921E40024B2A1 /* ContentPagerView.swift */,
 				AE001D9221ED335300284BB5 /* TimelapseView.swift */,
+				AE001D9421EE7F2400284BB5 /* PhotoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				AE13044D21E55DD20024B2A1 /* FileService.swift in Sources */,
 				AE13045621E7C4080024B2A1 /* VideoGenerator.swift in Sources */,
 				AE13044921E536D70024B2A1 /* ContentViewController.swift in Sources */,
+				AE001D9521EE7F2400284BB5 /* PhotoView.swift in Sources */,
 				AE0BBFDB21E5248E0065F72A /* AppDelegate.swift in Sources */,
 				AE2B592221EAA13F00BA4203 /* DateHelper.swift in Sources */,
 				AE13045221E5971F0024B2A1 /* ImageCell.swift in Sources */,

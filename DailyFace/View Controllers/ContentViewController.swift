@@ -116,10 +116,16 @@ class ContentViewController: UIViewController {
     
     func presentTimelapseView(url: URL) {
         let timelapseView = TimelapseView(frame: self.view.frame)
-        timelapseView.videoUrl = url
+        timelapseView.contentURL = url
         timelapseView.delegate = self
         
         self.view.addSubview(timelapseView)
+    }
+    
+    func reloadPagerView() {
+        urls = FileService.getImages()
+        
+        pagerView.reloadData()
     }
     
     // MARK: IBACTIONS
@@ -129,14 +135,11 @@ class ContentViewController: UIViewController {
     }
     
     @IBAction func videoButtonTapped(_ sender: Any) {
-//        self.presentTimelapseView()
-        
         VideoService.generateVideo(from: urls, completion: { (url, err) in
             guard err == nil else { return }
 
             if let url = url {
                 DispatchQueue.main.async {
-//                    self.playVideo(url: url)
                     self.presentTimelapseView(url: url)
 
                     self.timelapseButton.isUserInteractionEnabled = true
@@ -197,7 +200,17 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
     }
     
     func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool {
-        return false
+        return true
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+        let imgURL = urls[index]
+        
+        let photoView = PhotoView(frame: self.view.frame)
+        photoView.contentURL = imgURL
+        photoView.delegate = self
+        
+        self.view.addSubview(photoView)
     }
 }
 
@@ -214,6 +227,7 @@ extension ContentViewController: ContentPagerViewEditDelegate {
 }
 
 // MARK: TimelapseView
+
 extension ContentViewController: TimelapseViewDelegate {
     func didShare(item videoUrl: URL) {
         let activityItems: [Any] = [videoUrl, "Check out this timelapse I made with DailyFace!"]
@@ -223,5 +237,11 @@ extension ContentViewController: TimelapseViewDelegate {
         activityController.popoverPresentationController?.sourceRect = view.frame
         
         self.present(activityController, animated: true, completion: nil)
+    }
+    
+    func didDelete(item contentURL: URL) {
+        FileService.deleteImage(url: contentURL) {
+            self.reloadPagerView()
+        }
     }
 }
