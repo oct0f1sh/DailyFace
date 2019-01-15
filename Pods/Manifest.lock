@@ -1,24 +1,20 @@
 PODS:
   - FSPagerView (0.8.2)
   - JGProgressHUD (2.0.3)
-  - Nuke (7.5.2)
 
 DEPENDENCIES:
   - FSPagerView
   - JGProgressHUD
-  - Nuke (~> 7.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - FSPagerView
     - JGProgressHUD
-    - Nuke
 
 SPEC CHECKSUMS:
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
-  Nuke: 0350d346a688426e8f2331253ef28dc2fc4f6178
 
-PODFILE CHECKSUM: b69cacb6bcd49dbf921bdb7fdfc0cbf0bc48e738
+PODFILE CHECKSUM: 085b955cdeea1f77550aa467bc7df9f28ee582c6
 
 COCOAPODS: 1.5.3

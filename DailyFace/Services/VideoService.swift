@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Nuke
 
 class VideoService {
     static func generateVideo(from urls: [URL], completion: @escaping ((URL?, Error?) -> Void), progress: @escaping ((Progress) -> Void)) {

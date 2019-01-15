@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Nuke
 
 class ImagesViewController: UIViewController {
     var urls: [URL] = FileService.getImages()
@@ -39,7 +38,7 @@ extension ImagesViewController: UICollectionViewDataSource {
         
         let cell: ImageCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCell", for: indexPath) as! ImageCell
         
-        Nuke.loadImage(with: url, into: cell.imageView)
+        cell.imageView.image = UIImage(contentsOfFile: url.path)
         
         return cell
     }

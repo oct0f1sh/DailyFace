@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 import FSPagerView
-import Nuke
 import AVKit
 import JGProgressHUD
 
@@ -193,7 +192,8 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
         
         let url = urls[index]
         
-        Nuke.loadImage(with: url, into: cell.imageView!)
+        cell.imageView!.image = UIImage(contentsOfFile: url.path)
+        
         cell.textLabel?.text = url.path.split(separator: "/").last?.description.split(separator: ":").first?.description
         
         return cell
