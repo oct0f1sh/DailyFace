@@ -226,6 +226,8 @@
                                                 </constraints>
                                                 <state key="normal" image="camera"/>
                                                 <connections>
+                                                    <action selector="buttonDeselected:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="3ei-zS-1F2"/>
+                                                    <action selector="buttonSelected:" destination="hrO-jm-Ba1" eventType="touchDown" id="dvp-C6-eO3"/>
                                                     <action selector="retakeButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="tPb-6O-Ol1"/>
                                                 </connections>
                                             </button>
@@ -237,6 +239,8 @@
                                                 </constraints>
                                                 <state key="normal" image="queue"/>
                                                 <connections>
+                                                    <action selector="buttonDeselected:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="l4e-CU-OSr"/>
+                                                    <action selector="buttonSelected:" destination="hrO-jm-Ba1" eventType="touchDown" id="0nq-58-khv"/>
                                                     <action selector="videoButtonTapped:" destination="hrO-jm-Ba1" eventType="touchUpInside" id="czu-A5-wrL"/>
                                                 </connections>
                                             </button>
@@ -259,6 +263,7 @@
                         <viewLayoutGuide key="safeArea" id="Doe-Yl-V39"/>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="Cef-6D-htR" id="fBY-Bl-mcn"/>
                         <outlet property="dateLabel" destination="fOq-GO-Wkl" id="gfG-IJ-QYt"/>
                         <outlet property="imageView" destination="fzN-dY-ZbS" id="1Rz-BT-DWQ"/>
                         <outlet property="pagerView" destination="vTr-8R-55Q" id="Cpx-j7-dwS"/>

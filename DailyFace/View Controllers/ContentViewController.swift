@@ -19,6 +19,7 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var timelapseButton: UIButton!
+    @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var pagerView: ContentPagerView! {
         didSet {
             self.pagerView.register(ContentViewCell.self, forCellWithReuseIdentifier: "pagerCell")
@@ -129,8 +130,28 @@ class ContentViewController: UIViewController {
     
     // MARK: IBACTIONS
     
+    @IBAction func buttonSelected(_ sender: UIButton) {
+        sender.alpha = 0.3
+    }
+    
+    @IBAction func buttonDeselected(_ sender: UIButton) {
+        sender.alpha = 1
+    }
+    
     @IBAction func retakeButtonTapped(_ sender: UIButton) {
-        self.dismiss(animated: false, completion: nil)
+//        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.calculationModeLinear], animations: {
+//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
+//                sender.alpha = 0
+//            })
+//
+//            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4, animations: {
+//                sender.alpha = 1
+//            })
+//
+//        }) { (_) in
+//            self.dismiss(animated: true, completion: nil)
+//        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func videoButtonTapped(_ sender: Any) {
@@ -211,6 +232,8 @@ extension ContentViewController: FSPagerViewDataSource, FSPagerViewDelegate {
         photoView.delegate = self
         
         self.view.addSubview(photoView)
+        
+        pagerView.deselectItem(at: index, animated: true)
     }
 }
 

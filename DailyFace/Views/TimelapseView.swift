@@ -78,11 +78,15 @@ class TimelapseView: UIView {
         cancelButton.setImage(UIImage(imageLiteralResourceName: "exit"), for: .normal)
         cancelButton.setTitleColor(.black, for: .normal)
         cancelButton.addTarget(self, action: #selector(self.cancelButtonTapped(_:)), for: .touchUpInside)
+        cancelButton.addTarget(self, action: #selector(self.buttonSelected(_:)), for: .touchDown)
+        cancelButton.addTarget(self, action: #selector(self.buttonDeselected(_:)), for: .touchUpInside)
         
         let shareButton = UIButton(frame: CGRect(x: self.popupView.frame.maxX - (30 + borderWidth), y: self.popupView.bounds.maxY - (30 + borderWidth / 2), width: 30, height: 30))
         shareButton.setImage(UIImage(named: "share"), for: .normal)
         shareButton.setTitleColor(.black, for: .normal)
         shareButton.addTarget(self, action: #selector(self.shareButtonTapped(_:)), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(self.buttonSelected(_:)), for: .touchDown)
+        shareButton.addTarget(self, action: #selector(self.buttonDeselected(_:)), for: .touchUpInside)
         
         self.popupView.addSubview(cancelButton)
         self.popupView.addSubview(shareButton)
@@ -93,11 +97,14 @@ class TimelapseView: UIView {
         backgroundView.backgroundColor = .gray
         backgroundView.alpha = 0.75
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(cancelButtonTapped(_:)))
+        backgroundView.addGestureRecognizer(tap)
+        
         self.addSubview(backgroundView)
     }
     
     @objc
-    func cancelButtonTapped(_ sender: UIButton) {
+    func cancelButtonTapped(_ sender: Any) {
         self.removeFromSuperview()
     }
     
@@ -111,5 +118,15 @@ class TimelapseView: UIView {
         self.removeFromSuperview()
         
         delegate?.didDelete(item: contentURL)
+    }
+    
+    @objc
+    func buttonSelected(_ sender: UIButton) {
+        sender.alpha = 0.3
+    }
+    
+    @objc
+    func buttonDeselected(_ sender: UIButton) {
+        sender.alpha = 1
     }
 }
