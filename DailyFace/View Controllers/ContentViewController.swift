@@ -117,7 +117,7 @@ class ContentViewController: UIViewController {
     func presentTimelapseView(url: URL) {
         let timelapseView = TimelapseView(frame: self.view.frame)
         timelapseView.videoUrl = url
-        timelapseView.center = self.view.center
+        timelapseView.delegate = self
         
         self.view.addSubview(timelapseView)
     }
@@ -210,5 +210,18 @@ extension ContentViewController: ContentPagerViewEditDelegate {
         animateDelete(cell: cell)
         
         FileService.deleteImage(url: url) { }
+    }
+}
+
+// MARK: TimelapseView
+extension ContentViewController: TimelapseViewDelegate {
+    func didShare(item videoUrl: URL) {
+        let activityItems: [Any] = [videoUrl, "Check out this timelapse I made with DailyFace!"]
+        let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        
+        activityController.popoverPresentationController?.sourceView = view
+        activityController.popoverPresentationController?.sourceRect = view.frame
+        
+        self.present(activityController, animated: true, completion: nil)
     }
 }

@@ -10,6 +10,10 @@ import Foundation
 import UIKit
 import AVKit
 
+protocol TimelapseViewDelegate: class {
+    func didShare(item videoUrl: URL)
+}
+
 class TimelapseView: UIView {
     let borderWidth: CGFloat = 20
     
@@ -20,6 +24,8 @@ class TimelapseView: UIView {
     var playerView: UIView!
     
     var videoUrl: URL!
+    
+    weak var delegate: TimelapseViewDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,6 +102,6 @@ class TimelapseView: UIView {
     
     @objc
     func shareButtonTapped(_ sender: UIButton) {
-        print("share button tapped")
+        delegate?.didShare(item: videoUrl)
     }
 }
