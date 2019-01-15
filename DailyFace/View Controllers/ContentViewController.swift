@@ -115,7 +115,8 @@ class ContentViewController: UIViewController {
     }
     
     func presentTimelapseView() {
-        let vie = TimelapseView(frame: CGRect(x: 35, y: 50, width: 300, height: 430))
+        let vie = TimelapseView(frame: CGRect(x: 0, y: 0, width: 300, height: 430))
+        vie.center = self.view.center
         
         self.view.addSubview(vie)
     }
@@ -127,32 +128,33 @@ class ContentViewController: UIViewController {
     }
     
     @IBAction func videoButtonTapped(_ sender: Any) {
-//        self.presentTimelapseView()
-        VideoService.generateVideo(from: urls, completion: { (url, err) in
-            guard err == nil else { return }
-
-            if let url = url {
-                DispatchQueue.main.async {
-                    self.playVideo(url: url)
-
-                    self.timelapseButton.isUserInteractionEnabled = true
-                }
-            }
-
-        }) { (prog) in
-            // Update activity indicator
-            if prog.completedUnitCount == 1 {
-                // show activity indicator
-                self.setupProgressIndicator()
-            } else if prog.completedUnitCount > 1 && prog.completedUnitCount < prog.totalUnitCount {
-                // update activity indicator
-                self.updateProgressIndicator(progress: prog.fractionCompleted)
-            } else {
-                // update activity indicator and remove it
-                self.endProgressIndicator()
-            }
-            print("\(prog.completedUnitCount) of \(prog.totalUnitCount)")
-        }
+        self.presentTimelapseView()
+        
+//        VideoService.generateVideo(from: urls, completion: { (url, err) in
+//            guard err == nil else { return }
+//
+//            if let url = url {
+//                DispatchQueue.main.async {
+//                    self.playVideo(url: url)
+//
+//                    self.timelapseButton.isUserInteractionEnabled = true
+//                }
+//            }
+//
+//        }) { (prog) in
+//            // Update activity indicator
+//            if prog.completedUnitCount == 1 {
+//                // show activity indicator
+//                self.setupProgressIndicator()
+//            } else if prog.completedUnitCount > 1 && prog.completedUnitCount < prog.totalUnitCount {
+//                // update activity indicator
+//                self.updateProgressIndicator(progress: prog.fractionCompleted)
+//            } else {
+//                // update activity indicator and remove it
+//                self.endProgressIndicator()
+//            }
+//            print("\(prog.completedUnitCount) of \(prog.totalUnitCount)")
+//        }
     }
     
     // MARK: OVERRIDES

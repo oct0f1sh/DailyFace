@@ -10,12 +10,16 @@ import Foundation
 import UIKit
 
 class TimelapseView: UIView {
-    let borderWidth: CGFloat = 5
+    let borderWidth: CGFloat = 10
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = .blue
+        
+        self.layer.cornerRadius = 6
+        
+        self.clipsToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,21 +32,20 @@ class TimelapseView: UIView {
     }
     
     func layoutVideoPlayer() {
-        let player = UIView(frame: CGRect(x: borderWidth, y: borderWidth, width: self.bounds.width - (borderWidth * 2), height: self.bounds.height - 45))
+        let player = UIView(frame: CGRect(x: borderWidth, y: borderWidth, width: self.bounds.width - (borderWidth * 2), height: self.bounds.height - (30 + borderWidth * 2)))
         player.backgroundColor = .red
+        
         self.addSubview(player)
     }
     
     func layoutButtons() {
-        let cancelButton = UIButton(frame: CGRect(x: borderWidth, y: self.bounds.maxY - 35, width: 30, height: 30))
-        cancelButton.setTitle("X", for: .normal)
+        let cancelButton = UIButton(frame: CGRect(x: borderWidth - 5, y: self.bounds.maxY - 35, width: 30, height: 30))
+        cancelButton.setImage(UIImage(imageLiteralResourceName: "exit"), for: .normal)
         cancelButton.setTitleColor(.black, for: .normal)
-        cancelButton.backgroundColor = .white
         
         let shareButton = UIButton(frame: CGRect(x: self.bounds.maxX - 35, y: self.bounds.maxY - 35, width: 30, height: 30))
-        shareButton.setTitle("S", for: .normal)
+        shareButton.setImage(UIImage(named: "share"), for: .normal)
         shareButton.setTitleColor(.black, for: .normal)
-        shareButton.backgroundColor = .white
         
         self.addSubview(cancelButton)
         self.addSubview(shareButton)
