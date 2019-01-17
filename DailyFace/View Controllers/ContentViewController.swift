@@ -139,18 +139,6 @@ class ContentViewController: UIViewController {
     }
     
     @IBAction func retakeButtonTapped(_ sender: UIButton) {
-//        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [.calculationModeLinear], animations: {
-//            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.1, animations: {
-//                sender.alpha = 0
-//            })
-//
-//            UIView.addKeyframe(withRelativeStartTime: 0.1, relativeDuration: 0.4, animations: {
-//                sender.alpha = 1
-//            })
-//
-//        }) { (_) in
-//            self.dismiss(animated: true, completion: nil)
-//        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -249,7 +237,7 @@ extension ContentViewController: ContentPagerViewEditDelegate {
     }
 }
 
-// MARK: TimelapseView
+// MARK: TIMELAPSE VIEW
 
 extension ContentViewController: TimelapseViewDelegate {
     func didShare(item videoUrl: URL) {
