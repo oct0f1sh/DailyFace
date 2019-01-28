@@ -99,14 +99,21 @@ class ViewController: UIViewController {
     }
     
     func animateCaptureButton() {
+        let flashView = UIView(frame: self.view.frame)
+        flashView.backgroundColor = .white
+        flashView.alpha = 0
+        self.view.addSubview(flashView)
+        
         UIView.animate(withDuration: 0.15, animations: {
             self.captureButton.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             self.captureButton.backgroundColor = .white
+            flashView.alpha = 1
 //            self.captureButton.setTitle("✔️", for: .normal)
         }) { (_) in
             UIView.animate(withDuration: 0.15, animations: {
                 self.captureButton.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.captureButton.backgroundColor = .clear
+                flashView.alpha = 0
 //                self.captureButton.setTitle("", for: .normal)
             })
         }
