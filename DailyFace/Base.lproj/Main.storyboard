@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,7 +79,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyu-Sb-XG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="AxT-Ht-iig" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1190" y="956"/>
+            <point key="canvasLocation" x="1190" y="1414"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -130,9 +129,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="9kR-mX-9DC" kind="presentation" id="Ohx-dm-Zhk"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JVn-bK-Pjh">
                                         <rect key="frame" x="192" y="821" width="30" height="30"/>
@@ -179,6 +175,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-42.399999999999999" y="26.53673163418291"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="dqa-GJ-v7u">
+            <objects>
+                <viewController id="cHa-1y-Wl3" customClass="SettingsViewController" customModule="DailyFace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mq0-Yu-amQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcR-tL-x2p">
+                                <rect key="frame" x="30" y="74" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="gpo-tc-KeU" kind="unwind" unwindAction="unwindToCameraWithSegue:" id="vqK-FL-RPA"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="136" translatesAutoresizingMaskIntoConstraints="NO" id="vkY-LQ-ibo">
+                                <rect key="frame" x="53" y="204" width="308.5" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily Reminders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLn-Em-yUh">
+                                        <rect key="frame" x="0.0" y="0.0" width="123.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mQ-9i-Qf6">
+                                        <rect key="frame" x="259.5" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="switchChanged:" destination="cHa-1y-Wl3" eventType="valueChanged" id="BeJ-Xe-h57"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RcR-tL-x2p" firstAttribute="leading" secondItem="8YM-c7-d9C" secondAttribute="leading" constant="30" id="6Uc-dh-d2P"/>
+                            <constraint firstItem="RcR-tL-x2p" firstAttribute="top" secondItem="8YM-c7-d9C" secondAttribute="top" constant="30" id="9QN-yQ-Zjw"/>
+                            <constraint firstItem="vkY-LQ-ibo" firstAttribute="top" secondItem="RcR-tL-x2p" secondAttribute="bottom" constant="100" id="TqU-Va-3Se"/>
+                            <constraint firstItem="vkY-LQ-ibo" firstAttribute="centerX" secondItem="Mq0-Yu-amQ" secondAttribute="centerX" id="fzJ-vL-lF6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8YM-c7-d9C"/>
+                    </view>
+                    <connections>
+                        <outlet property="reminderSwitch" destination="5mQ-9i-Qf6" id="mXp-Be-vlX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P2t-co-zpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gpo-tc-KeU" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-43" y="720"/>
         </scene>
         <!--Data Source-->
         <scene sceneID="AuS-pM-Qcm">
@@ -290,7 +337,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzn-dD-0s4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-43" y="956"/>
+            <point key="canvasLocation" x="-43" y="1414"/>
         </scene>
     </scenes>
     <resources>

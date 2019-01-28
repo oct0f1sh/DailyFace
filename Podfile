@@ -8,4 +8,5 @@ target 'DailyFace' do
   # Pods for DailyFace
   pod 'FSPagerView'
   pod 'JGProgressHUD'
+  pod 'DLLocalNotifications'
 end

@@ -1,20 +1,24 @@
 PODS:
+  - DLLocalNotifications (0.06)
   - FSPagerView (0.8.2)
   - JGProgressHUD (2.0.3)
 
 DEPENDENCIES:
+  - DLLocalNotifications
   - FSPagerView
   - JGProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - DLLocalNotifications
     - FSPagerView
     - JGProgressHUD
 
 SPEC CHECKSUMS:
+  DLLocalNotifications: 751d53da896bc396bb23d4d3570b7fd3c7654e4e
   FSPagerView: 816a18842306973cc7cc6df8a5332272f7815c30
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
 
-PODFILE CHECKSUM: 085b955cdeea1f77550aa467bc7df9f28ee582c6
+PODFILE CHECKSUM: 49f965d82bd6ab051c9988fff423bb53a043b9cf
 
 COCOAPODS: 1.5.3
