@@ -35,7 +35,8 @@ extension UIImage {
         let destData = UnsafeMutablePointer<UInt8>.allocate(capacity: destHeight * destBytesPerRow)
         
         defer {
-            destData.deallocate(capacity: destHeight * destBytesPerRow)
+//            destData.deallocate(capacity: destHeight * destBytesPerRow)
+            destData.deallocate()
         }
         
         var destBuffer = vImage_Buffer(data: destData, height: vImagePixelCount(destHeight), width: vImagePixelCount(destWidth), rowBytes: destBytesPerRow)

@@ -120,7 +120,7 @@ public class DLNotificationScheduler{
             
             content.body = notification.alertBody!
             
-            content.sound = (notification.soundName == nil) ? UNNotificationSound.default() : UNNotificationSound.init(named: notification.soundName!)
+            content.sound = (notification.soundName == nil) ? UNNotificationSound.default : UNNotificationSound.init(named: UNNotificationSoundName(rawValue: notification.soundName!))
             
             if !(notification.attachments == nil){ content.attachments = notification.attachments! }
             

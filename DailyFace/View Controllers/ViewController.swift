@@ -50,7 +50,9 @@ class ViewController: UIViewController {
     
     func setupInputOutput() {
         do {
-            let captureDeviceInput = try AVCaptureDeviceInput(device: frontCamera!)
+            guard let frontCamera = frontCamera else { return }
+            
+            let captureDeviceInput = try AVCaptureDeviceInput(device: frontCamera)
             captureSession.addInput(captureDeviceInput)
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
@@ -63,11 +65,13 @@ class ViewController: UIViewController {
     
     func setupPreviewLayer() {
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraPreviewLayer!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        cameraPreviewLayer!.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-        cameraPreviewLayer!.frame = self.view.frame
+        guard let cameraPreviewLayer = cameraPreviewLayer else { return }
         
-        self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
+        cameraPreviewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        cameraPreviewLayer.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+        cameraPreviewLayer.frame = self.view.frame
+        
+        self.view.layer.insertSublayer(cameraPreviewLayer, at: 0)
     }
     
     func startRunningCaptureSession() {
